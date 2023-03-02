@@ -1,7 +1,7 @@
 from dotenv import load_dotenv
 import discord
 import os
-from app.gpt3_ai.openai import chatgpt_response
+from app.gpt3_ai.ai import chatgpt_response
 
 load_dotenv()
 
@@ -25,8 +25,8 @@ class MyClient(discord.Client):
                 print(command, user_message)
         
         if command == '/ai' or command == '/bot' or command == '/chatgpt':
-            bot_response = chatgpt_response(prompt =  user_message)
-            await message.channel.send(f"Answer: {bot_response}")
+            bot_response = chatgpt_response(prompt = user_message)
+            await message.channel.send(f"{bot_response}")
 
 intents = discord.Intents.default()
 intents.message_content = True
