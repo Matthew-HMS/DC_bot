@@ -1,19 +1,13 @@
-# open the file in read and write mode
-file = open("test.txt", "r+")
+import json
 
-# read the content of the file
-content = file.read()
-print("The original content of the file is:")
-print(content)
+file = open("history.txt", "r")
+contents = file.read()
+lines = contents.split("\n")
+history = []
 
-# modify the content of the file
-file.write("\nThis is a modified text.\n") # write a new line at the beginning of the file
+for line in lines:
+    mes = json.loads(line)
+    history.append(mes)
 
-# read the modified content of the file
-file.seek(0) # move the cursor to the beginning of the file
-modified_content = file.read()
-print("The modified content of the file is:")
-print(modified_content)
-
-# close the file
-file.close()
+print(lines)
+print(history)
