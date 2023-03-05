@@ -2,6 +2,7 @@ from dotenv import load_dotenv
 import openai
 import os
 import json
+import re
 
 load_dotenv()
 
@@ -10,7 +11,7 @@ openai.api_key = os.getenv("CHATGPT_API_KEY")
 file = open("history.txt", "r")
 contents = file.read()
 lines = []
-lines = contents.split("\n")
+lines = re.findall(r'{.*?}', contents)
 #history = [{"role": "system", "content": "You are a cat model, will add 'peko' at the end of every sentence"}]
 history = []
 
